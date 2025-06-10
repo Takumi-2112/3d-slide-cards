@@ -11,42 +11,48 @@ export const ThreeDMarquee = ({ images, className }) => {
     return images.slice(start, start + chunkSize);
   });
 
-  // Touch/swipe state
-  const [isDragging, setIsDragging] = useState(false);
-  const dragX = useMotionValue(0);
-  const [currentColumn, setCurrentColumn] = useState(0);
+  // Touch scroll state
   const containerRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [isTouching, setIsTouching] = useState(false);
 
   // Handle touch events
-  const handleTouchStart = () => {
-    setIsDragging(true);
+  const handleTouchStart = (e) => {
+    setIsTouching(true);
+    setTouchStart(e.touches[0].clientY);
   };
 
   const handleTouchMove = (e) => {
-    if (isDragging) {
-      const touch = e.touches[0];
-      const movementX = touch.clientX - (containerRef.current?.getBoundingClientRect().left || 0);
-      dragX.set(movementX);
-    }
+    if (!isTouching) return;
+    const touchY = e.touches[0].clientY;
+    const deltaY = touchY - touchStart;
+    setScrollY(deltaY);
   };
 
   const handleTouchEnd = () => {
-    setIsDragging(false);
-    const currentX = dragX.get();
-    const containerWidth = containerRef.current?.clientWidth || 1;
-    const newColumn = Math.min(3, Math.max(0, Math.floor((currentX / containerWidth) * 4)));
-    setCurrentColumn(newColumn);
-    animate(dragX, (newColumn * containerWidth) / 4, { type: "spring", stiffness: 300 });
+    setIsTouching(false);
+    setScrollY(0);
   };
 
-  // Column animation based on currentColumn
-  const columnAnimations = chunks.map((_, colIndex) => ({
-    y: colIndex % 2 === 0 ? (colIndex === currentColumn ? 0 : 100) : (colIndex === currentColumn ? 0 : -100),
-    transition: {
-      duration: 0.8,
-      ease: "easeInOut"
-    }
-  }));
+  // Calculate individual card movement based on scroll position
+  const getCardMovement = (colIndex, rowIndex) => {
+    const direction = scrollY > 0 ? 1 : -1;
+    const distance = Math.min(50, Math.abs(scrollY) / 5;
+    const angle = Math.random() * 20 - 10; // Random angle between -10 and 10 degrees
+    
+    // Different columns get slightly different movement patterns
+    const xOffset = (colIndex % 2 === 0 ? 1 : -1) * distance * 0.7;
+    const yOffset = direction * distance;
+    
+    return {
+      x: xOffset,
+      y: yOffset,
+      rotateZ: angle,
+      scale: 1 - Math.abs(scrollY) / 1000,
+      transition: { duration: 0.3 }
+    };
+  };
 
   return (
     <div
@@ -69,7 +75,6 @@ export const ThreeDMarquee = ({ images, className }) => {
           >
             {chunks.map((subarray, colIndex) => (
               <motion.div
-                animate={columnAnimations[colIndex]}
                 key={colIndex + "marquee"}
                 className="flex flex-col items-start gap-8"
               >
@@ -78,20 +83,21 @@ export const ThreeDMarquee = ({ images, className }) => {
                   <div className="relative" key={imageIndex + image}>
                     <GridLineHorizontal className="-top-4" offset="20px" />
                     <motion.img
+                      animate={isTouching ? getCardMovement(colIndex, imageIndex) : {
+                        x: 0,
+                        y: 0,
+                        rotateZ: 0,
+                        scale: 1,
+                        transition: { type: "spring", stiffness: 300 }
+                      }}
                       whileHover={{
                         y: -10,
+                        scale: 1.05,
+                        transition: { duration: 0.2 }
                       }}
-                      whileTap={{
-                        scale: 0.95,
-                      }}
-                      transition={{
-                        duration: 0.3,
-                        ease: "easeInOut",
-                      }}
-                      key={imageIndex + image}
                       src={image}
                       alt={`Image ${imageIndex + 1}`}
-                      className="aspect-[970/700] rounded-lg object-cover ring ring-gray-950/5 hover:shadow-2xl"
+                      className="aspect-[970/700] rounded-lg object-cover ring ring-gray-950/5 hover:shadow-2xl cursor-pointer"
                       width={970}
                       height={700}
                     />
@@ -102,16 +108,35 @@ export const ThreeDMarquee = ({ images, className }) => {
           </div>
         </div>
       </div>
-      {/* Mobile swipe indicator */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 sm:hidden">
-        {[0, 1, 2, 3].map((i) => (
-          <div
-            key={i}
-            className={`h-2 w-2 rounded-full ${i === currentColumn ? 'bg-white' : 'bg-white/30'}`}
-          />
-        ))}
-      </div>
     </div>
+  );
+};
+
+// GridLineVertical and GridLineHorizontal components remain the same as before
+const GridLineVertical = ({ className, offset }) => {
+  return (
+    <div
+      style={{
+        "--background": "#ffffff",
+        "--color": "rgba(0, 0, 0, 0.2)",
+        "--height": "5px",
+        "--width": "1px",
+        "--fade-stop": "90%",
+        "--offset": offset || "150px",
+        "--color-dark": "rgba(255, 255, 255, 0.2)",
+        maskComposite: "exclude",
+      }}
+      className={cn(
+        "absolute top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)]",
+        "bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)]",
+        "[background-size:var(--width)_var(--height)]",
+        "[mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
+        "[mask-composite:exclude]",
+        "z-30",
+        "dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
+        className
+      )}
+    ></div>
   );
 };
 
@@ -136,33 +161,6 @@ const GridLineHorizontal = ({ className, offset }) => {
         "[mask-composite:exclude]",
         "z-30",
         "dark:bg-[linear-gradient(to_right,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
-        className
-      )}
-    ></div>
-  );
-};
-
-const GridLineVertical = ({ className, offset }) => {
-  return (
-    <div
-      style={{
-        "--background": "#ffffff",
-        "--color": "rgba(0, 0, 0, 0.2)",
-        "--height": "5px",
-        "--width": "1px",
-        "--fade-stop": "90%",
-        "--offset": offset || "150px",
-        "--color-dark": "rgba(255, 255, 255, 0.2)",
-        maskComposite: "exclude",
-      }}
-      className={cn(
-        "absolute top-[calc(var(--offset)/2*-1)] h-[calc(100%+var(--offset))] w-[var(--width)]",
-        "bg-[linear-gradient(to_bottom,var(--color),var(--color)_50%,transparent_0,transparent)]",
-        "[background-size:var(--width)_var(--height)]",
-        "[mask:linear-gradient(to_top,var(--background)_var(--fade-stop),transparent),_linear-gradient(to_bottom,var(--background)_var(--fade-stop),transparent),_linear-gradient(black,black)]",
-        "[mask-composite:exclude]",
-        "z-30",
-        "dark:bg-[linear-gradient(to_bottom,var(--color-dark),var(--color-dark)_50%,transparent_0,transparent)]",
         className
       )}
     ></div>
