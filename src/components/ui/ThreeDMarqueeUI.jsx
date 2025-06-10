@@ -38,7 +38,7 @@ export const ThreeDMarquee = ({ images, className }) => {
   // Calculate individual card movement based on scroll position
   const getCardMovement = (colIndex, rowIndex) => {
     const direction = scrollY > 0 ? 1 : -1;
-    const distance = Math.min(50, Math.abs(scrollY) / 5;
+    const distance = Math.min(50, Math.abs(scrollY) / 5);
     const angle = Math.random() * 20 - 10; // Random angle between -10 and 10 degrees
     
     // Different columns get slightly different movement patterns
