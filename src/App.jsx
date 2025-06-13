@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ThreeDMarqueeDemo as ThreeDMarquee } from "./ThreeDMarquee";
 import "./index.css";
 import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,6 +13,9 @@ function App() {
     <div className="master-app bg-black w-screen">
       <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <ThreeDMarquee />
+      <section className="hero-section"> 
+        <Hero />
+      </section>
     </div>
   );
 }
