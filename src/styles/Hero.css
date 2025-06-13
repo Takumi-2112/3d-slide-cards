@@ -43,7 +43,7 @@
 
 @media (max-width: 768px) {
   .master-hero {
-    padding: 4% 0;
+    padding: 4% 0 4% 0;
     font-size: 1.5rem;
   }
 
