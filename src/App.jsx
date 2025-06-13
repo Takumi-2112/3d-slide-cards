@@ -10,7 +10,7 @@ function App() {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <div className="master-app bg-black w-screen">
+    <div className="master-app bg-black w-screen overflow-x-hidden">
       <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
       <ThreeDMarquee />
       <section className="hero-section"> 
