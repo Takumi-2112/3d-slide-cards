@@ -28,7 +28,7 @@ export const ThreeDMarquee = ({ images, className }) => {
             {chunks.map((subarray, colIndex) => (
               <div
                 key={colIndex + "column"}
-                className="h-full overflow-y-auto"
+                className="h-full overflow-y-auto overflow-x-hidden hide-scrollbar"
               >
                 <motion.div
                   className="flex flex-col items-start gap-8 min-h-full pb-8"
