@@ -1,10 +1,15 @@
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/Projects.css";
 
 export default function Projects() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <div className="master-projects">
-      <Navbar />
+      <Navbar toggleMenu={toggleMenu} menuOpen={menuOpen} />
       <h1 className="projects-title">Our Projects</h1>
       <div className="projects-content-container">
         <div className="project one">
