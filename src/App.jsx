@@ -1,17 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { ThreeDMarqueeDemo as ThreeDMarquee } from './ThreeDMarquee'
-import './index.css'
+import { useState } from "react";
+import { ThreeDMarqueeDemo as ThreeDMarquee } from "./ThreeDMarquee";
+import "./index.css";
+import Navbar from "./components/Navbar";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <div className="master-app bg-black w-screen">
-      <ThreeDMarquee/>
+      <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
+      <ThreeDMarquee />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
