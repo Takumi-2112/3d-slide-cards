@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 // import d2vLogo from "../assets/D2V-LOGO.png";
 
 function Navbar({ handleLoginModalOpen, menuOpen, toggleMenu }) {
-
   return (
     <nav className="master-navbar">
       <div className="nav-logo">
-        <h1>D2V LABS</h1>
+        <Link to={"/"}>
+          <h1>D2V LABS</h1>
+        </Link>
       </div>
 
       {/* Hamburger icon */}
@@ -30,7 +32,9 @@ function Navbar({ handleLoginModalOpen, menuOpen, toggleMenu }) {
         </div>
         <div className="link">
           <button className="nav-buttons">
-            <span>Projects</span>
+            <Link to={"/projects"}>
+              <span>Projects</span>
+            </Link>
           </button>
         </div>
         <div className="link">

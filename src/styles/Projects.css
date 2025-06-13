@@ -1,0 +1,59 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100dvw;
+  background-color: #000000;
+}
+
+.master-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.projects-title {
+  align-self: flex-start;
+  color: #ffffff;
+  font-size: 3rem;
+  text-align: center;
+  margin: 10% 0 0 5%;
+  font-family: "Orbitron", sans-serif;
+}
+
+.projects-content-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.project {
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%; /* default: 3 per row */
+  min-width: 250px;
+}
+
+.project-name {
+  color: #000000;
+  font-size: 2rem;
+  font-family: "saira semi condensed", sans-serif;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 768px) {
+  .project {
+    width: 90%;
+  }
+}
