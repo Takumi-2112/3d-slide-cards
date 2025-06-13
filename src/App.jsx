@@ -16,6 +16,7 @@ function App() {
       <section className="hero-section"> 
         <Hero />
       </section>
+      
     </div>
   );
 }
