@@ -1,9 +1,11 @@
+import "../styles/Hero.css";
+
 function Hero() {
   return (
-    <div className="hero">
-      <h1>D2V LABS</h1>
-      <h3>The Genesis of AI-Powered Innovation</h3>
-      <button className="cta-button">Explore our projects<i className="fa-solid fa-arrow-right"></i></button>
+    <div className="master-hero">
+      <h1 className="hero-title">D2V LABS</h1>
+      <h3 className="hero-title-statement">The Genesis of AI-Powered Innovation</h3>
+      <button className="hero-button">Explore our projects<i className="fa-solid fa-arrow-right hero-arrow"></i></button>
     </div>
   );
 }
