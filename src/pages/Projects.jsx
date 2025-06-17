@@ -36,6 +36,9 @@ export default function Projects() {
           <h2 className="project-name">Project Six</h2>
           <p className="project-description">Description of Project One.</p>
         </div>
+        <div className="tile">
+          <h1>Build transformative Technologies for the Automation Revolution</h1>
+        </div>
       </div>
     </div>
   );
