@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="master-app bg-black w-screen overflow-x-hidden">
       <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
-      {/* <ThreeDMarquee /> */}
       <Hero />
       <About />
       <Projects />
