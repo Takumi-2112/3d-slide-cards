@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Projects from "./pages/Projects";
+import Footer from "./components/Footer";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,6 +18,7 @@ function App() {
       <Hero />
       <About />
       <Projects />
+      <Footer />
     </div>
   );
 }
