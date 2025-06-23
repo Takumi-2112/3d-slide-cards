@@ -76,7 +76,8 @@
   .hero-logo {
     width: 500px;
     height: 500px;
-     animation: fade-up-safe 1.2s ease-out forwards;
+      animation: fade-up-safe 3s ease-out forwards;
+    
   }
 
   .hero-title-statement {
@@ -84,5 +85,6 @@
     padding: 0.2rem 1rem;
     margin: 0 0 20% 2%;
     animation: slide-in-right 1s ease-out forwards;
+    animation-delay: 1.5s; /* comes in after the logo */
   }
 }
