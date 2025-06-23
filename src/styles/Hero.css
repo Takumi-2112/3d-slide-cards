@@ -35,19 +35,23 @@
 
 @media (max-width: 768px) {
   .master-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 0 0 10% 0;
     font-size: 1.5rem;
   }
 
-  .hero-title {
+  .d2v-hero {
     font-size: 3.5rem;
     margin-bottom: 5%;
     
   }
 
-  .hero-button {
-    font-size: 1rem;
+  .hero-title-statement {
+    font-size: 3rem;
     padding: 0.2rem 1rem;
-    margin-bottom: 15%;
+    margin: 0 0 20% 2%;
   }
 }

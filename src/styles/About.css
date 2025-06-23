@@ -61,3 +61,26 @@
     color: #ffffff; /* Highlight color */
   }
 }
+
+@media (max-width: 768px) {
+ .mission-statement,
+.what-we-do {
+  width: 100%;
+  max-width: 600px;
+  padding: 0 1.5rem;
+}
+
+.mission-text,
+.offerings-list li {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.wwo-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  text-align: center;
+}
+}

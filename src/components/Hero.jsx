@@ -6,7 +6,7 @@ function Hero() {
   return (
     <div className="master-hero">
       <div className="hero-logo">
-        <img classname="d2v-hero" src={d2vLogo} alt="" />
+        <img className="d2v-hero" src={d2vLogo} alt="" />
       </div>
       <h1 className="hero-title-statement">
         Building tools for an automated tomorrow
