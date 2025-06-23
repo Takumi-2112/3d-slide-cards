@@ -45,3 +45,16 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .footer-content {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-links {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
