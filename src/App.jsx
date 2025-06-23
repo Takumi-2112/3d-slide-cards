@@ -4,6 +4,7 @@ import "./index.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Projects from "./pages/PRojects";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,9 +14,10 @@ function App() {
   return (
     <div className="master-app bg-black w-screen overflow-x-hidden">
       <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
-      <ThreeDMarquee />
+      {/* <ThreeDMarquee /> */}
       <Hero />
       <About />
+      <Projects />
     </div>
   );
 }

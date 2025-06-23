@@ -1,9 +1,9 @@
 .master-hero{
-  padding: 10% 0;
+  /* margin: 0 5%; */
+  /* padding: 10% 0; */
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   font-family: "saira semi condensed", sans-serif;
   font-size: 2rem;
@@ -11,27 +11,19 @@
   color: #ffffff;
 }
 
-.hero-title{
-  font-size: 4rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.hero-logo{
+  width: 800px;
+  height: 800px;
 }
 
-.hero-button{
-  margin: 3% 0 0 0;
-  padding: 0.3rem 1.5rem;
-  background-color: #ffffff;
-  color: #000000;
-  border: 3px solid #ffffff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-family: "Orbitron", sans-serif;
-  font-size: 1.2rem;
-  transition: 0.25s ease;
+.d2v-hero{
+  width: 100%;
+}
 
-  .hero-arrow{
-    margin-left: 0.5rem;
-  }
+.hero-title-statement{
+ text-align: center;
+ margin: 0 5% 5% 0;
+ font-size: 3rem;
 }
 
 .hero-button:hover{
