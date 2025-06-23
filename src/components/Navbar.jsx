@@ -28,13 +28,6 @@ function Navbar({ handleLoginModalOpen, menuOpen, toggleMenu }) {
             <span>Sign Up</span>
           </button>
         </div>
-        {/* <div className="link">
-          <button className="nav-buttons">
-            <Link to={"/projects"}>
-              <span>Projects</span>
-            </Link>
-          </button>
-        </div> */}
         <div className="link">
           <button className="nav-buttons">
             <span>Contact</span>
