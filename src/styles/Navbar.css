@@ -138,6 +138,12 @@
     font-size: 1.3rem;
     font-weight: 600;
   }
+
+  .d2v-nav {
+    width: 75%;
+    filter: drop-shadow(0 0 10px #ffffff);
+  }
+
   .nav-links {
     position: absolute;
     top: 60px;
