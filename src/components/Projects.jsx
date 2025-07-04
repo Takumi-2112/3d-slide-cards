@@ -32,7 +32,6 @@ export default function Projects() {
 
   return (
     <div className="master-projects">
-      <Navbar toggleMenu={toggleMenu} menuOpen={menuOpen} />
       <h1 className="projects-title">Our Projects</h1>
       <div className="projects-content-container">
         {["Wintermute", "SimStim", "Molly Protocol", "Flatline"].map((name, i) => (

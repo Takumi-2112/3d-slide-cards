@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ThreeDMarqueeDemo as ThreeDMarquee } from "./ThreeDMarquee";
 import "./index.css";
+import "./styles/HeroProject.css";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -15,9 +16,11 @@ function App() {
   return (
     <div className="master-app bg-black w-screen overflow-x-hidden">
       <Navbar menuOpen={menuOpen} toggleMenu={toggleMenu} />
-      <Hero />
+      <div className="hero-project-container">
+        <Hero />
+        <Projects />
+      </div>
       <About />
-      <Projects />
       <Footer />
     </div>
   );

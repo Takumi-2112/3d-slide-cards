@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100dvw;
-  background-color: #000000;
+  background-color: inherit;
 }
 
 .master-projects {
@@ -15,13 +15,14 @@ body {
 }
 
 .projects-title {
-  align-self: flex-start;
-  color: #ffffff;
+  /* align-self: flex-start; */
+  color: #00ffff;
   font-size: 3rem;
   font-weight: 600;
   text-align: center;
-  margin: 5% 0 5% 12%;
-  font-family: "Orbitron", sans-serif;
+  margin: 5% 0 5% 0;
+  /* font-family: "Orbitron", sans-serif; */
+  font-family: "saira semi condensed", sans-serif;
 }
 
 .projects-content-container {
