@@ -33,6 +33,12 @@ body {
   width: 100%;
   scroll-behavior: smooth;
   padding: 1rem 0;
+   scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE 10+ */
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .carousel-slide {
@@ -134,26 +140,17 @@ body {
   }
 
   .carousel-container {
-    padding-bottom: 1rem;
-  }
+  min-height: 450px;
+}
 
   .carousel-slide {
     padding: 0 2rem;
   }
 
-  .project {
-    width: 90%;
-    height: 400px;
-    max-width: none;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  }
-
-  .project.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+ .project {
+  opacity: 1;
+  transform: none;
+}
 
   .project:hover {
     transform: none;

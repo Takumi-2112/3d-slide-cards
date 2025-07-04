@@ -19,16 +19,6 @@ function Navbar({ handleLoginModalOpen, menuOpen, toggleMenu }) {
 
       <div className={`nav-links ${menuOpen ? "show" : ""}`}>
         <div className="link">
-          <button className="nav-buttons" onClick={handleLoginModalOpen}>
-            <span>Login</span>
-          </button>
-        </div>
-        <div className="link">
-          <button className="nav-buttons">
-            <span>Sign Up</span>
-          </button>
-        </div>
-        <div className="link">
           <button className="nav-buttons">
             <span>Contact</span>
           </button>
