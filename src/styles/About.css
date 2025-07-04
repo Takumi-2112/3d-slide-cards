@@ -9,72 +9,38 @@
   padding: 2rem;
 }
 
-.about-title {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 2rem;
-  font-family: "Orbitron", sans-serif;
-  font-weight: 600;
-  align-self: flex-start;
-}
-
-.mission-statement {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 80%;
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.mission-text{
-  line-height: 1.5;
-  text-align: left;
-  margin-bottom: 2%;
-  font-family: "Saira Semi Condensed", sans-serif;
-}
-
 .what-we-do {
-  width: 80%;
+  width: 90%;
 }
 
 .wwo-title{
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-family: "Orbitron", sans-serif;
-}
-
-.offerings-list {
-  color: #ffffff;
-  list-style-position: outside;
-  padding-left: 1.5rem;
   font-family: "saira semi condensed", sans-serif;
 }
 
-.offerings-list li {
-  margin-bottom: 1rem;
-  line-height: 1.5;
+.advantages-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
 
-  span {
-    font-weight: 700;
-    color: #ffffff; /* Highlight color */
-  }
+.advantage {
+  width: 30%;
+  background-color: #282828;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 0.5rem;
+  flex: 1;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
- .mission-statement,
 .what-we-do {
   width: 100%;
   max-width: 600px;
   padding: 0 1.5rem;
-}
-
-.mission-text,
-.offerings-list li {
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
 }
 
 .wwo-title {
