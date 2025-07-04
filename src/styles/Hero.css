@@ -1,4 +1,4 @@
-.master-hero{
+.master-hero {
   /* margin: 0 5%; */
   /* padding: 10% 0; */
   display: flex;
@@ -59,7 +59,7 @@
   }
 }
 
-.d2v-hero{
+.d2v-hero {
   width: 70%;
 }
 
@@ -83,14 +83,14 @@
   }
 }
 
-.hero-button:hover{
+.hero-button:hover {
   background-color: #000000;
   color: #ffffff;
   border: 3px solid #ffffff;
   box-shadow: 0 0 20px #ffffff;
 }
 
-.master-hero h2{
+.master-hero h2 {
   width: 80%;
   font-size: 1.5rem;
   font-weight: 400;
@@ -110,7 +110,7 @@
 
   .master-hero h2 {
     width: 90%;
-    font-size: 1rem;
+    font-size: 2rem;
     margin: 0 0 5% 0;
     text-align: center;
   }
@@ -126,14 +126,14 @@
   }
 
   .hero-logo {
-    width: 400px;
-    height: 400px;
-      animation: fade-up-safe 3s ease-out forwards;
-    
+    width: 600px;
+    height: 600px;
+    animation: fade-up-safe 3s ease-out forwards;
+    margin: 0 0 50% 0 ;
   }
 
   .hero-title-statement {
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding: 0.2rem 1rem;
     margin: 0 0 20% 2%;
     animation: slide-in-right 1s ease-out forwards;

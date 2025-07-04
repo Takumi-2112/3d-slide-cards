@@ -15,9 +15,7 @@ function Hero() {
       </div>
       <h2>
         D2V Labs partners with founders to build, fund, and scale innovative
-        AI-powered solutions for Industry 4.0. Our framework gives technical
-        leaders the strategic and operational resources required to translate
-        their concepts into viable, high-growth businesses.
+        AI-powered solutions for Industry 4.0.
       </h2>
     </div>
   );
