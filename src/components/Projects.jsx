@@ -11,8 +11,8 @@ export default function Projects() {
   const iconClassesArray = [
     "fa-solid fa-spaghetti-monster-flying", // free
     // "fa-solid fa-alien-8bit",
-    "fa-solid fa-skull", // free
-    "fa-solid fa-skull-crossbones", // free
+    // "fa-solid fa-skull", // free
+    // "fa-solid fa-skull-crossbones", // free
     // "fa-solid fa-alien",
     // "fa-solid fa-hydra",
     "fa-solid fa-robot", // free
@@ -30,7 +30,7 @@ export default function Projects() {
   ];
 
   const [slots, setSlots] = useState(
-    projects.map(() => Array(4).fill("fa-robot"))
+    projects.map(() => Array(3).fill("fa-robot"))
   );
   const shuffleIntervals = useRef([]);
   const hasAnimated = useRef(projects.map(() => false));
