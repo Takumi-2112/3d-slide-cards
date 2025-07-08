@@ -30,12 +30,13 @@ export default function Projects() {
   ];
 
   const [slots, setSlots] = useState(
-    projects.map(() => Array(4).fill("fa-robot")) // initial icons
+    projects.map(() => Array(4).fill("fa-robot"))
   );
   const shuffleIntervals = useRef([]);
+  const hasAnimated = useRef(projects.map(() => false));
 
   const startShuffle = (projectIndex) => {
-    if (shuffleIntervals.current[projectIndex]) return; // prevent stacking
+    if (shuffleIntervals.current[projectIndex]) return;
 
     let count = 0;
     const interval = setInterval(() => {
@@ -43,7 +44,10 @@ export default function Projects() {
         prev.map((slotIcons, i) =>
           i === projectIndex
             ? slotIcons.map(
-                () => iconClassesArray[Math.floor(Math.random() * iconClassesArray.length)]
+                () =>
+                  iconClassesArray[
+                    Math.floor(Math.random() * iconClassesArray.length)
+                  ]
               )
             : slotIcons
         )
@@ -76,20 +80,48 @@ export default function Projects() {
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const cooldowns = Array(projects.length).fill(false);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.dataset.index);
+          if (entry.isIntersecting && !cooldowns[index]) {
+            cooldowns[index] = true;
+            startShuffle(index);
+
+            // Add a cooldown to prevent retriggering too quickly
+            setTimeout(() => {
+              cooldowns[index] = false;
+            }, 2000); // 2 seconds cooldown before it can retrigger
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+      }
+    );
+
+    const elements = document.querySelectorAll(".project");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <div className="master-projects">
       <h1 className="projects-title">Our Projects</h1>
       <div className="carousel-container" ref={carouselRef}>
         {projects.map((name, i) => (
           <div className="carousel-slide" key={name}>
-            <div className="project">
-              <div
-                className="project-image"
-                onMouseEnter={() => startShuffle(i)}
-              >
+            <div className="project" data-index={i}>
+              <div className="project-image">
                 <div className="slot-machine">
                   {slots[i].map((icon, idx) => (
-                    <i key={idx} className={`fa-solid ${icon}`}></i>
+                    <i key={idx} className={icon}></i>
                   ))}
                 </div>
               </div>
