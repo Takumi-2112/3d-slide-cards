@@ -10,7 +10,7 @@ function Hero() {
           <img className="d2v-hero" src={d2vLogo} alt="" />
         </div>
         <h1 className="hero-title-statement">
-          Building tools for an automated tomorrow
+          BUILDING TOOLS FOR AN AUTOMATED TOMORROW
         </h1>
       </div>
       <h2>

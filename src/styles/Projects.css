@@ -183,10 +183,15 @@ body {
     padding: 1.5rem;
     cursor: pointer;
     transition: 0.25s ease;
+    border: none;
   }
 
   .project:hover .project-name {
     color: #00ffff;
+  }
+
+  .project:hover .project-image {
+    background-color: #333333;
   }
 }
 

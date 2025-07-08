@@ -126,8 +126,8 @@
   }
 
   .hero-logo {
-    width: 600px;
-    height: 600px;
+    width: 500px;
+    height: 500px;
     animation: fade-up-safe 3s ease-out forwards;
     margin: 0 0 50% 0 ;
   }
