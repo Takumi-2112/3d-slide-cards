@@ -19,9 +19,11 @@ function Navbar({ handleLoginModalOpen, menuOpen, toggleMenu }) {
 
       <div className={`nav-links ${menuOpen ? "show" : ""}`}>
         <div className="link">
+          <a href="mailto:info@d2vlabs.com">
           <button className="nav-buttons">
             <span>Contact</span>
           </button>
+          </a>
         </div>
       </div>
     </nav>
