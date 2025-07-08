@@ -77,6 +77,10 @@ body {
   color: #ffffff;
 }
 
+.project:hover .project-image{
+  background-color: #000000;
+}
+
 .project-image {
   background-color: #333333;
   width: 90%;
@@ -162,11 +166,6 @@ body {
   .project {
     opacity: 1;
     transform: none;
-  }
-
-  .project:hover .project-name,
-  .project:hover .project-description {
-    color: #000000;
   }
 
   .project:hover {
