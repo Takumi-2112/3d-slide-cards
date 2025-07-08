@@ -8,6 +8,56 @@ export default function Projects() {
   const carouselRef = useRef(null);
   const projects = ["Wintermute", "SimStim", "Molly Protocol", "Flatline"];
 
+  const iconClassesArray = [
+    "fa-solid fa-spaghetti-monster-flying", // free
+    // "fa-solid fa-alien-8bit",
+    "fa-solid fa-skull", // free
+    "fa-solid fa-skull-crossbones", // free
+    // "fa-solid fa-alien",
+    // "fa-solid fa-hydra",
+    "fa-solid fa-robot", // free
+    "fa-solid fa-ghost", // free
+    // "fa-solid fa-ufo",
+    // "fa-solid fa-raygun",
+    // "fa-solid fa-planet-ringed",
+    // "fa-solid fa-atom-simple",
+    // "fa-solid fa-cat-space",
+    // "fa-solid fa-rocket-launch",
+    // "fa-solid fa-sword",
+    // "fa-solid fa-dinosaur",
+    // "fa-solid fa-t-rex",
+    "fa-solid fa-shuttle-space", // free
+  ];
+
+  const [slots, setSlots] = useState(
+    projects.map(() => Array(4).fill("fa-robot")) // initial icons
+  );
+  const shuffleIntervals = useRef([]);
+
+  const startShuffle = (projectIndex) => {
+    if (shuffleIntervals.current[projectIndex]) return; // prevent stacking
+
+    let count = 0;
+    const interval = setInterval(() => {
+      setSlots((prev) =>
+        prev.map((slotIcons, i) =>
+          i === projectIndex
+            ? slotIcons.map(
+                () => iconClassesArray[Math.floor(Math.random() * iconClassesArray.length)]
+              )
+            : slotIcons
+        )
+      );
+      count += 1;
+      if (count >= 15) {
+        clearInterval(interval);
+        shuffleIntervals.current[projectIndex] = null;
+      }
+    }, 100);
+
+    shuffleIntervals.current[projectIndex] = interval;
+  };
+
   const handleDotClick = (index) => {
     setCurrentIndex(index);
     carouselRef.current.scrollTo({
@@ -33,12 +83,21 @@ export default function Projects() {
         {projects.map((name, i) => (
           <div className="carousel-slide" key={name}>
             <div className="project">
-              <div className="project-image">
-                <i className="fa-solid fa-image"></i>
+              <div
+                className="project-image"
+                onMouseEnter={() => startShuffle(i)}
+              >
+                <div className="slot-machine">
+                  {slots[i].map((icon, idx) => (
+                    <i key={idx} className={`fa-solid ${icon}`}></i>
+                  ))}
+                </div>
               </div>
               <div className="project-title-description">
                 <h2 className="project-name">{name}</h2>
-                <p className="project-description">Description of Project One.</p>
+                <p className="project-description">
+                  Description of Project One.
+                </p>
               </div>
             </div>
           </div>
@@ -56,4 +115,3 @@ export default function Projects() {
     </div>
   );
 }
-

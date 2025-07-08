@@ -132,6 +132,20 @@ body {
   background-color: #00ffff;
 }
 
+.slot-machine {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.slot-machine i {
+  font-size: 2rem;
+  transition: transform 0.2s;
+  color: black;
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .projects-title {
