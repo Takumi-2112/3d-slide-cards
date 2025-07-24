@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="master-about">
       <div className="what-we-do">
-        <h2 className="wwo-title">Our Unfair Advantage</h2>
+        <h2 className="wwo-title">Straight to the Point</h2>
         <div className="advantage-div">
           <div className="advantage">
             <span className="advantage-title">Build Faster and Smarter</span>

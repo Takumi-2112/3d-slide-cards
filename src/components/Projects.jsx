@@ -6,37 +6,44 @@ export default function Projects() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
-  const projects = ["Wintermute", "SimStim", "Molly Protocol", "Flatline"];
+
+  const projects = ["Wintermute", "Flatline"];
+  const projectDescriptions = [
+    "Wintermute is a local, low-code/no-code generative AI system that automates and streamlines complex data tasks within highly regulated or air-gapped environments, operating fully offline to guarantee data privacy and regulatory compliance.",
+    "Flatline is a next-generation user interface designed to facilitate dynamic interaction and idea synthesis with large language models (LLMs). Rather than treating conversations as linear chat threads, it enables users to navigate and explore dialogue as an interactive, evolving knowledge space—unlocking deeper insights and more fluid collaboration.",
+  ];
 
   const iconClassesArray = [
-    "fa-solid fa-spaghetti-monster-flying", // free
-    // "fa-solid fa-alien-8bit",
-    // "fa-solid fa-skull", // free
-    // "fa-solid fa-skull-crossbones", // free
-    // "fa-solid fa-alien",
-    // "fa-solid fa-hydra",
-    "fa-solid fa-robot", // free
-    "fa-solid fa-ghost", // free
-    // "fa-solid fa-ufo",
-    // "fa-solid fa-raygun",
-    // "fa-solid fa-planet-ringed",
-    // "fa-solid fa-atom-simple",
-    // "fa-solid fa-cat-space",
-    // "fa-solid fa-rocket-launch",
-    // "fa-solid fa-sword",
-    // "fa-solid fa-dinosaur",
-    // "fa-solid fa-t-rex",
-    "fa-solid fa-shuttle-space", // free
+    "fa-solid fa-spaghetti-monster-flying",
+    "fa-solid fa-robot",
+    "fa-solid fa-ghost",
+    "fa-solid fa-shuttle-space",
   ];
 
   const [slots, setSlots] = useState(
-    projects.map(() => Array(3).fill("fa-robot"))
+    projects.map(() => Array(3).fill("fa-solid fa-robot"))
   );
+
   const shuffleIntervals = useRef([]);
-  const hasAnimated = useRef(projects.map(() => false));
+  const [showDescription, setShowDescription] = useState(
+    projects.map(() => false)
+  );
 
   const startShuffle = (projectIndex) => {
-    if (shuffleIntervals.current[projectIndex]) return;
+    // Clear any existing interval for this project
+    if (shuffleIntervals.current[projectIndex]) {
+      clearInterval(shuffleIntervals.current[projectIndex]);
+    }
+
+    // Reset description visibility and slots
+    setShowDescription((prev) =>
+      prev.map((val, i) => (i === projectIndex ? false : val))
+    );
+    setSlots((prev) =>
+      prev.map((slot, i) =>
+        i === projectIndex ? Array(3).fill("fa-solid fa-robot") : slot
+      )
+    );
 
     let count = 0;
     const interval = setInterval(() => {
@@ -56,8 +63,14 @@ export default function Projects() {
       if (count >= 15) {
         clearInterval(interval);
         shuffleIntervals.current[projectIndex] = null;
+
+        setTimeout(() => {
+          setShowDescription((prev) =>
+            prev.map((val, i) => (i === projectIndex ? true : val))
+          );
+        }, 150);
       }
-    }, 100);
+    }, 150);
 
     shuffleIntervals.current[projectIndex] = interval;
   };
@@ -81,20 +94,12 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    const cooldowns = Array(projects.length).fill(false);
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number(entry.target.dataset.index);
-          if (entry.isIntersecting && !cooldowns[index]) {
-            cooldowns[index] = true;
+          if (entry.isIntersecting) {
             startShuffle(index);
-
-            // Add a cooldown to prevent retriggering too quickly
-            setTimeout(() => {
-              cooldowns[index] = false;
-            }, 2000); // 2 seconds cooldown before it can retrigger
           }
         });
       },
@@ -108,6 +113,10 @@ export default function Projects() {
 
     return () => {
       elements.forEach((el) => observer.unobserve(el));
+      // Clean up all intervals on unmount
+      shuffleIntervals.current.forEach((interval) => {
+        if (interval) clearInterval(interval);
+      });
     };
   }, []);
 
@@ -119,17 +128,23 @@ export default function Projects() {
           <div className="carousel-slide" key={name}>
             <div className="project" data-index={i}>
               <div className="project-image">
-                <div className="slot-machine">
-                  {slots[i].map((icon, idx) => (
-                    <i key={idx} className={icon}></i>
-                  ))}
-                </div>
-              </div>
-              <div className="project-title-description">
-                <h2 className="project-name">{name}</h2>
-                <p className="project-description">
-                  Description of Project One.
-                </p>
+                {showDescription[i] ? (
+                  <div className="project-content">
+                    <h2 className="project-name fade-in-text">{name}</h2>
+                    <p
+                      className="project-text fade-in-text"
+                      style={{ animationDelay: "0.3s" }}
+                    >
+                      {projectDescriptions[i]}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="slot-machine">
+                    {slots[i].map((icon, idx) => (
+                      <i key={idx} className={icon}></i>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
