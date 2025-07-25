@@ -1,5 +1,6 @@
 .master-about {
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #333333 100%);
+    background-color: black;
+  /* background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #333333 100%); */
   color: #ffffff;
   display: flex;
   flex-direction: column;

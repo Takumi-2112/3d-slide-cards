@@ -70,7 +70,7 @@ export default function Projects() {
           );
         }, 150);
       }
-    }, 150);
+    }, 350);
 
     shuffleIntervals.current[projectIndex] = interval;
   };
@@ -122,7 +122,7 @@ export default function Projects() {
 
   return (
     <div className="master-projects">
-      <h1 className="projects-title">Our Projects</h1>
+      <h1 className="projects-title">Current Projects</h1>
       <div className="carousel-container" ref={carouselRef}>
         {projects.map((name, i) => (
           <div className="carousel-slide" key={name}>
