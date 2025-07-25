@@ -208,4 +208,17 @@ body {
   .project-name {
     font-size: 1.5rem;
   }
+
+  .project:hover {
+    background-color: #ffffff0d;
+    border: 1px solid #ffffff1a;
+  }
+
+  .project:hover .project-name {
+    color: #00ffff;
+  }
+
+  .project:hover .project-image {
+    background-color: #ffffff0d;
+  }
 }
