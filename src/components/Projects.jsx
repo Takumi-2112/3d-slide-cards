@@ -81,7 +81,7 @@ export default function Projects() {
         )
       );
       count += 1;
-      if (count >= 15) {
+      if (count >= 10) {
         clearInterval(interval);
         shuffleIntervals.current[projectIndex] = null;
 
@@ -89,9 +89,9 @@ export default function Projects() {
           setShowDescription((prev) =>
             prev.map((val, i) => (i === projectIndex ? true : val))
           );
-        }, 150);
+        }, 450);
       }
-    }, 250);
+    }, 300);
 
     shuffleIntervals.current[projectIndex] = interval;
   };
