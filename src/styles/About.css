@@ -70,25 +70,28 @@
   .wwo-title {
     font-size: 2rem;
     font-weight: 600;
-    margin: 2rem 0 2rem 0;
+    margin: 2rem 0;
     text-align: center;
   }
 
   .advantage-div {
-    max-width: 90%;
-    display: flex;
+    display: flex !important; /* force override grid */
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    margin: 0;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    gap: 1.5rem;
   }
 
   .advantage {
+    width: 90%;
+    max-width: 500px;
+    padding: 2rem 1rem;
     text-align: center;
-    max-width: 500px;  
-    min-width: 499px;   
-    margin: 0 auto;       
-    padding: 2rem 1rem;  
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .advantage-title {
@@ -101,6 +104,7 @@
     max-width: 90%;
   }
 }
+
 
 @media (min-width: 850px) and (max-width: 1300px) {
   .wwo-title {
