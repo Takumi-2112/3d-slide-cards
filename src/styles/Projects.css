@@ -172,13 +172,16 @@ body {
   gap: 0.5rem;
 }
 
-.slot-machine i {
-  font-size: 2rem;
-  transition: transform 0.2s;
-  color: rgb(255, 255, 255);
+.slot-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 6px;
+  transition: transform 0.2s ease;
+  filter: brightness(0) invert(1); /* <- this turns them white */
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 849px) {
   .projects-title {
     font-size: 2.5rem;
     margin: 20% 0 5% 5%;
@@ -220,5 +223,38 @@ body {
 
   .project:hover .project-image {
     background-color: #ffffff00;
+  }
+}
+
+@media (min-width: 2000px) and (max-width: 2800px) {
+  .master-projects {
+    padding-bottom: 5%;
+  }
+
+  .projects-title {
+    font-size: 5rem;
+    margin: 10% 0 2% 0;
+  }
+
+  .carousel-container {
+    padding: 2rem 0;
+  }
+
+  .project {
+    max-width: 750px;
+    height: 700px;
+  }
+
+  .project-name {
+    font-size: 3.5rem;
+  }
+
+  .project-text {
+    font-size: 2rem;
+  }
+
+  .slot-icon {
+    width: 95px;
+    height: 95px;
   }
 }

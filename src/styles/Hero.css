@@ -13,21 +13,13 @@
 }
 
 .title-case {
-  margin: 20% 0 2% 0;
+  margin: 20% 0 10% 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 100px;
   width: 100%;
-  padding: 0 5%;
-}
-
-.title-case {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 0 5%;
+  padding: 5%;
 }
 
 .hero-logo,
@@ -92,13 +84,16 @@
 
 .master-hero h2 {
   width: 80%;
-  font-size: 1.5rem;
+  opacity: 0;
+  font-size: 2rem;
   font-weight: 400;
   text-align: center;
   color: #b1b1b1;
+  animation: slide-in-right 0.5s ease-out forwards;
+  animation-delay: 3s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 849px) {
   .master-hero {
     display: flex;
     flex-direction: column;
@@ -129,7 +124,7 @@
     width: 500px;
     height: 500px;
     animation: fade-up-safe 3s ease-out forwards;
-    margin: 0 0 50% 0 ;
+    margin: 0 0 50% 0;
   }
 
   .hero-title-statement {
@@ -138,5 +133,31 @@
     margin: 0 0 20% 2%;
     animation: slide-in-right 1s ease-out forwards;
     animation-delay: 1.5s; /* comes in after the logo */
+  }
+}
+
+@media (min-width: 2000px) and (max-width: 2800px) {
+  .master-hero {
+    font-size: 2.5rem;
+    padding-bottom: 5%;
+  }
+
+  .hero-logo {
+    width: 400px;
+    height: 400px;
+  }
+
+  .hero-title-statement {
+    font-size: 6rem;
+  }
+
+  .title-case {
+    margin-top: 20%;
+    margin-bottom: 10%;
+  }
+
+  .master-hero h2 {
+    font-size: 3rem;
+    width: 70%;
   }
 }

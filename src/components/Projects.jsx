@@ -2,6 +2,22 @@ import React, { useState, useRef, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/Projects.css";
 
+import icon1 from "../assets/icons/1.svg";
+import icon2 from "../assets/icons/2.svg";
+import icon3 from "../assets/icons/3.svg";
+import icon4 from "../assets/icons/4.svg";
+import icon5 from "../assets/icons/5.svg";
+import icon6 from "../assets/icons/6.svg";
+import icon7 from "../assets/icons/7.svg";
+import icon8 from "../assets/icons/8.svg";
+import icon9 from "../assets/icons/9.svg";
+import icon10 from "../assets/icons/10.svg";
+import icon11 from "../assets/icons/11.svg";
+import icon12 from "../assets/icons/12.svg";
+import icon13 from "../assets/icons/13.svg";
+import icon14 from "../assets/icons/14.svg";
+import icon15 from "../assets/icons/15.svg";
+
 export default function Projects() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -13,15 +29,27 @@ export default function Projects() {
     "Flatline is a next-generation user interface designed to facilitate dynamic interaction and idea synthesis with large language models (LLMs). Rather than treating conversations as linear chat threads, it enables users to navigate and explore dialogue as an interactive, evolving knowledge space—unlocking deeper insights and more fluid collaboration.",
   ];
 
-  const iconClassesArray = [
-    "fa-solid fa-spaghetti-monster-flying",
-    "fa-solid fa-robot",
-    "fa-solid fa-ghost",
-    "fa-solid fa-shuttle-space",
+  // ✅ Use imported SVGs
+  const iconArray = [
+    icon1,
+    icon2,
+    icon3,
+    icon4,
+    icon5,
+    icon6,
+    icon7,
+    icon8,
+    icon9,
+    icon10,
+    icon11,
+    icon12,
+    icon13,
+    icon14,
+    icon15,
   ];
 
   const [slots, setSlots] = useState(
-    projects.map(() => Array(3).fill("fa-solid fa-robot"))
+    projects.map(() => Array(3).fill(icon1)) 
   );
 
   const shuffleIntervals = useRef([]);
@@ -30,19 +58,15 @@ export default function Projects() {
   );
 
   const startShuffle = (projectIndex) => {
-    // Clear any existing interval for this project
     if (shuffleIntervals.current[projectIndex]) {
       clearInterval(shuffleIntervals.current[projectIndex]);
     }
 
-    // Reset description visibility and slots
     setShowDescription((prev) =>
       prev.map((val, i) => (i === projectIndex ? false : val))
     );
     setSlots((prev) =>
-      prev.map((slot, i) =>
-        i === projectIndex ? Array(3).fill("fa-solid fa-robot") : slot
-      )
+      prev.map((slot, i) => (i === projectIndex ? Array(3).fill(icon1) : slot))
     );
 
     let count = 0;
@@ -51,10 +75,7 @@ export default function Projects() {
         prev.map((slotIcons, i) =>
           i === projectIndex
             ? slotIcons.map(
-                () =>
-                  iconClassesArray[
-                    Math.floor(Math.random() * iconClassesArray.length)
-                  ]
+                () => iconArray[Math.floor(Math.random() * iconArray.length)]
               )
             : slotIcons
         )
@@ -70,7 +91,7 @@ export default function Projects() {
           );
         }, 150);
       }
-    }, 350);
+    }, 250);
 
     shuffleIntervals.current[projectIndex] = interval;
   };
@@ -113,7 +134,6 @@ export default function Projects() {
 
     return () => {
       elements.forEach((el) => observer.unobserve(el));
-      // Clean up all intervals on unmount
       shuffleIntervals.current.forEach((interval) => {
         if (interval) clearInterval(interval);
       });
@@ -141,7 +161,12 @@ export default function Projects() {
                 ) : (
                   <div className="slot-machine">
                     {slots[i].map((icon, idx) => (
-                      <i key={idx} className={icon}></i>
+                      <img
+                        key={idx}
+                        src={icon}
+                        alt="icon"
+                        className="slot-icon"
+                      />
                     ))}
                   </div>
                 )}

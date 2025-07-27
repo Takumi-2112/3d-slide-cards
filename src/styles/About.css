@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 2rem;
+  padding: 5% 0;
 }
 
 .what-we-do {
@@ -61,7 +61,7 @@
   margin: 5% 0 0 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 849px) {
   .what-we-do {
     width: 100%;
     max-width: 600px;
@@ -94,5 +94,74 @@
   .advantage p {
     margin: 0 auto;
     max-width: 90%;
+  }
+}
+
+@media (min-width: 850px) and (max-width: 1300px) {
+  .wwo-title {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .advantage-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .advantage {
+    height: auto;
+    max-width: 100%;
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .advantage-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .advantage p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
+
+@media (min-width: 2000px) and (max-width: 2800px) {
+  .master-about {
+    padding: 5% 0;
+  }
+
+  .wwo-title {
+    font-size: 5rem;
+  }
+
+  .advantage-div {
+    margin: 0;
+    max-width: 2000px;
+    height: 700px;
+    gap: 150px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .advantage {
+    min-width: 550px;
+    height: 550px;
+  }
+  
+  .advantage-title {
+    font-size: 2.5rem;
+  }
+
+  .advantage p {
+    font-size: 1.8rem;
   }
 }

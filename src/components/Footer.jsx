@@ -12,10 +12,22 @@ export default function Footer() {
           <img className="d2v-logo-img" src={d2vLogo} alt="D2V Labs logo" />
         </div>
         <div className="footer-links">
-          <a href="mailto:info@d2vlabs.com"><i className="fa-solid fa-envelope"></i></a>
-          <a href=""><i className="fa-brands fa-instagram"></i></a>
-          <a href=""><i className="fa-brands fa-x-twitter"></i></a>
+          <a href="mailto:info@d2vlabs.com">
+            <i className="fa-solid fa-envelope"></i>
+          </a>
+          {/* <a href=""><i className="fa-brands fa-instagram"></i></a>
+          <a href=""><i className="fa-brands fa-x-twitter"></i></a> */}
         </div>
+      </div>
+      <div className="footer-credits">
+        <p>
+          Website developed by{" "}
+          <span>
+            <a href="https://www.linkedin.com/in/thomas-azran-b3427b311/">
+              Thomas Azran
+            </a>
+          </span>
+        </p>
       </div>
     </footer>
   );
