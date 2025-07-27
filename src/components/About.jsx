@@ -27,13 +27,13 @@ function About() {
           </div>
           <div className="advantage">
             <span className="advantage-title">Real-World Validation</span>
-            <p>
+            {/* <p>
               The real test happens outside the lab. We provide the frameworks
               for massive scale and, more importantly, access to the live
               customer environments needed for critical testing. Your innovation
               gets battle-tested and validated in the real world, ensuring it
               makes an impact from day one.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
