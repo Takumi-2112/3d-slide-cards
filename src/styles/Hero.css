@@ -61,7 +61,7 @@
   font-size: 3.5rem;
   opacity: 0;
   animation: slide-in-right 0.5s ease-out forwards;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 @keyframes slide-in-right {
@@ -90,7 +90,7 @@
   text-align: center;
   color: #b1b1b1;
   animation: slide-in-right 0.5s ease-out forwards;
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 
 @media (max-width: 849px) {
